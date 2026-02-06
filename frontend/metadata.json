@@ -1,0 +1,8 @@
+{
+  "name": "StudyMaster AI",
+  "description": "A comprehensive study companion that helps you organize subjects, topics, and study materials. Leverage Gemini AI to generate instant summaries and practice quizzes from your lesson content.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
