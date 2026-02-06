@@ -1,0 +1,27 @@
+
+services:
+  api:
+    build: ./server
+    container_name: studymaster_api
+    environment:
+      - NODE_ENV=production
+      - PORT=8088
+      - DATABASE_URL=postgresql://studymaster:studymaster_password@postgres:5432/studymaster?schema=public
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    depends_on:
+      - postgres
+    ports:
+      - "8088:8088"
+
+  postgres:
+    image: postgres:16
+    container_name: studymaster_postgres
+    environment:
+      - POSTGRES_USER=studymaster
+      - POSTGRES_PASSWORD=studymaster_password
+      - POSTGRES_DB=studymaster
+    volumes:
+      - studymaster_pgdata:/var/lib/postgresql/data
+
+volumes:
+  studymaster_pgdata:
